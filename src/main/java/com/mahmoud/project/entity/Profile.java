@@ -33,7 +33,7 @@ public class Profile {
 
     @ToString.Exclude
     @JsonIgnore
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name = "id")
     private User user;

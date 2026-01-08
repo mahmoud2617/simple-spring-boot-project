@@ -115,7 +115,7 @@
                     <url>jdbc:postgresql://localhost:5432/mydb</url>
                     <user>mahmoud</user>
                     <password>password</password>
-                    <cleanDisabled>false</cleanDisabled>
+                    <cleanDisabled>true</cleanDisabled>
                     <schemas>
                         <schema>practice_schema</schema>
                     </schemas>

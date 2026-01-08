@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
@@ -18,9 +19,13 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             JOIN FETCH p.category""")
     List<Product> findAll();
 
-    @EntityGraph(attributePaths = {"category"})
+    @Override
     @Query("""
             SELECT p FROM Product p
-            WHERE p.category.id = :categoryId""")
+            RIGHT JOIN FETCH p.category
+            WHERE p.id = :id""")
+    Optional<Product> findById(@Param("id") Long id);
+
+    @EntityGraph(attributePaths = {"category"})
     List<Product> findAllByCategoryId(@Param("categoryId") Byte categoryId);
 }
