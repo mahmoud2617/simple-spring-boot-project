@@ -13,6 +13,7 @@ spring:
     locations: classpath:db/migration
 
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
       hibernate:
         default_schema: practice_schema
